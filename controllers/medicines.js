@@ -17,7 +17,7 @@ router.get('/', async (_request, response) => {
 
 router.post('/', async (request, response) => {
   console.log('teste');
-  return response.status(OK).json({ message: 'teste'});
+  return response.status(OK).json({ message: 'TA FUNCIONANDO CARA'});
 });
 
 module.exports = router;
