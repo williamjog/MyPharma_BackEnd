@@ -3,8 +3,8 @@
 # Repositório criado para o desafio técnico da empresa MyPharma! 
 
 Elaborar um CRUD, para cadastro de produtos, obedecendo o seguinte:
-*Interface em React
-*Banco de dados MongoDB.
+* Interface em React
+* Banco de dados MongoDB.
 * Repositório contendo os arquivos que compõe o Back-End da aplicação.
 * Endereço da API: https://mypharmabackend.herokuapp.com/
 
