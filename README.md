@@ -8,7 +8,7 @@ Elaborar um CRUD, para cadastro de produtos, obedecendo o seguinte:
 
 
 ## Repositório contendo os arquivos que compõe o Back-End da aplicação.
-## Endereço da API: https://mypharmabackend.herokuapp.com/
+## Endereço da API: https://mypharmabackend.herokuapp.com/ (GET)
 
 Dados dos produtos:
 * Código de barras;
