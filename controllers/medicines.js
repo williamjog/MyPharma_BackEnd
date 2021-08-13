@@ -51,7 +51,7 @@ router.put('/', async (request, response) => {
       return response.status(NOT_ACCEPTABLE).json({ message: 'Invalid information.'});
     }
     await connection('products').then((products) => products.updateOne(
-      { cod, nome: name },
+      { cod },
       { $set: { cod, nome: name, descricao: description, preco: price, estoque: stock } }
     ))
     return response.status(OK).json({ message: 'Medicine has been successfully edited.'});
