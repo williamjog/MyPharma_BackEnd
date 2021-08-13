@@ -8,7 +8,7 @@ const OK = 200;
 
 const CREATED = 201;
 
-const NON_AUTHORITATIVE_INFORMATION = 203;
+const NOT_ACCEPTABLE = 406;
 
 router.get('/', async (_request, response) => {
   try {
@@ -34,7 +34,7 @@ router.post('/', async (request, response) => {
   try {
     const { cod, name, description, price, stock } = request.body;
     if (!cod || !name || !description || !price || !stock) {
-      return response.status(NON_AUTHORITATIVE_INFORMATION).json({ message: 'Invalid information.'});
+      return response.status(NOT_ACCEPTABLE).json({ message: 'Invalid information.'});
     }
     await connection('products').then((products) => products.insertOne(
       { cod, nome: name, descricao: description, preco: price, estoque: stock }
