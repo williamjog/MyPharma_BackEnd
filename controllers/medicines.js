@@ -15,9 +15,22 @@ router.get('/', async (_request, response) => {
   }}
 );
 
+router.get('/:name/', async (request, response) => {
+  try {
+    const medicineDetailed = await connection('products').then((products) => products.findOne(
+      { nome: request.params.name },
+      {}));
+    return response.status(OK).json(medicineDetailed);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 router.post('/', async (request, response) => {
-  console.log('teste');
-  return response.status(OK).json({ message: 'TA FUNCIONANDO CARA'});
+  const { name } = request.body;
+
+
+
 });
 
 module.exports = router;
