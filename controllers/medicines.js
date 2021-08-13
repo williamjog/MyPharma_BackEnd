@@ -45,13 +45,14 @@ router.post('/', async (request, response) => {
 
 router.put('/', async (request, response) => {
   try {
+    console.log('entrei no put')
     const { cod, name, description, price, stock } = request.body;
     if (!cod || !name || !description || !price || !stock) {
       return response.status(NOT_ACCEPTABLE).json({ message: 'Invalid information.'});
     }
     await connection('products').then((products) => products.updateOne(
       { cod, nome: name },
-      { cod, nome: name, descricao: description, preco: price, estoque: stock }
+      { $set: { cod, nome: name, descricao: description, preco: price, estoque: stock } }
     ))
     return response.status(OK).json({ message: 'Medicine has been successfully edited.'});
   } catch (err) {
