@@ -20,7 +20,7 @@ const checkBeforeCreate = async (request, response, next) => {
     const { cod } = request.body;
     const doesTheProductExist = await connection('products').then((products) => products.findOne({ cod }, {}));
     if (doesTheProductExist) {
-      return response.status(NOT_FOUND).json({ message: 'The medicine already exists.'})
+      return response.status(NOT_FOUND).json({ message: 'EAN code already exists.'})
     }
     next();
   } catch (err) {
@@ -33,7 +33,7 @@ const checkBeforeUpdateOrDelete = async (request, response, next) => {
     const { cod } = request.body;
     const doesTheProductExist = await connection('products').then((products) => products.findOne({ cod }, {}));
     if (!doesTheProductExist) {
-      return response.status(NOT_FOUND).json({ message: 'The medicine does not exist.'})
+      return response.status(NOT_FOUND).json({ message: 'The EAN code does not exist.'})
     }
     next();
   } catch (err) {
