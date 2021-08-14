@@ -59,8 +59,7 @@ router.put('/', checkBodyInformations, checkBeforeUpdateOrDelete, async (request
 router.delete('/', checkBodyInformations, checkBeforeUpdateOrDelete, async (request, response) => {
   try {
     const { cod } = request.body;
-    await connection('products').then((products) => products.deleteOne(
-      { cod }));
+    await connection('products').then((products) => products.deleteOne({ cod }));
     return response.status(OK).json({ message: 'Product has been successfully deleted.' }) 
   } catch (err) {
     console.error(err.message);
