@@ -5,8 +5,8 @@ const NOT_FOUND = 404;
 
 const checkBodyInformations = async (request, response, next) => {
   try {
-    const { cod, name, description, price, stock } = request.body;
-    if (!cod || !name || !description || !price || !stock) {
+    const { cod, name, apresentacao, price, stock } = request.body;
+    if (!cod || !name || !apresentacao || !price || !stock) {
       return response.status(NOT_ACCEPTABLE).json({ message: 'Invalid information.'});
     }
     next();
