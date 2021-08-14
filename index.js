@@ -12,6 +12,6 @@ app.use(express.json());
 
 app.use('/', medicines);
 
-app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/images', express.static(__dirname + '/images'));
 
 app.listen(process.env.PORT || 3000, () => console.log("Server has been started."));
