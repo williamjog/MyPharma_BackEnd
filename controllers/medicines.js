@@ -2,7 +2,10 @@ const { Router } = require('express');
 
 const connection = require('../service/connection');
 
-const { checkInformation } = require('../middlewares/checkInformations');
+const { checkBodyInformations,
+        checkBeforeCreate,
+        checkBeforeUpdateOrDelete
+      } = require('../middlewares/checkInformations');
 
 const router = Router();
 
@@ -28,7 +31,7 @@ router.get('/:name/', async (request, response) => {
   }
 });
 
-router.post('/', checkInformation, async (request, response) => {
+router.post('/', checkBodyInformations, checkBeforeCreate, async (request, response) => {
   try {
     const { cod, name, description, price, stock } = request.body;
     await connection('products').then((products) => products.insertOne(
@@ -40,7 +43,7 @@ router.post('/', checkInformation, async (request, response) => {
   }
 });
 
-router.put('/', checkInformation, async (request, response) => {
+router.put('/', checkBodyInformations, checkBeforeUpdateOrDelete, async (request, response) => {
   try {
     const { cod, name, description, price, stock } = request.body;
     await connection('products').then((products) => products.updateOne(
@@ -48,6 +51,17 @@ router.put('/', checkInformation, async (request, response) => {
       { $set: { cod, nome: name, descricao: description, preco: price, estoque: stock } }
     ))
     return response.status(OK).json({ message: 'Medicine has been successfully edited.'});
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+router.delete('/', checkBodyInformations, checkBeforeUpdateOrDelete, async (request, response) => {
+  try {
+    const { cod } = request.body;
+    await connection('products').then((products) => products.deleteOne(
+      { cod }));
+    return response.status(OK).json({ message: 'Product has been successfully deleted.' }) 
   } catch (err) {
     console.error(err.message);
   }
