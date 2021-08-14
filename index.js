@@ -3,10 +3,9 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
+const medicines = require('./controllers/medicines');
 
 const app = express();
-
-const medicines = require('./controllers/medicines');
 
 app.use(express.json());
 
