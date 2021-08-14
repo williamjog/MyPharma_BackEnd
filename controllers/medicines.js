@@ -18,8 +18,8 @@ router.get('/', async (_request, response) => {
     return response.status(OK).json(allMedicines);
   } catch (err) {
     console.error(err.message);
-  }}
-);
+  }
+});
 
 router.get('/:name/', async (request, response) => {
   try {
