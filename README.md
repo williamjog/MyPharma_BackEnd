@@ -12,6 +12,7 @@ Elaborar um CRUD, para cadastro de produtos, obedecendo o seguinte:
 
   * https://mypharmabackend.herokuapp.com/ (GET)
   * https://mypharmabackend.herokuapp.com/tylenol (GET) (Substituir o nome do remédio por algum que exista)
+  * https://mypharmabackend.herokuapp.com/images/paracetamol.jpg (Verificar quais imagens existem e substituir por outra ao invés paracetamol.jpg)
 
 Dados dos produtos:
 * Código de barras;
