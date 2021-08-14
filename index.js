@@ -10,4 +10,4 @@ app.use(express.json());
 
 app.use('/', medicines);
 
-app.listen(process.env.PORT || 3000, () => console.log("Server has been started"));
+app.listen(process.env.PORT || 3000, () => console.log("Server has been started."));

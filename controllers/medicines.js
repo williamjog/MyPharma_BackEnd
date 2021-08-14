@@ -35,7 +35,7 @@ router.post('/', checkBodyInformations, checkBeforeCreate, async (request, respo
   try {
     const { cod, name, description, price, stock } = request.body;
     await connection('products').then((products) => products.insertOne(
-      { cod, nome: name, descricao: description, preco: price, estoque: stock }
+      { cod, nome: name, apresentacao: description, preco: price, estoque: stock }
     ));
     return response.status(CREATED).json({ message: 'Medicine has been successfully created.'});
   } catch (err) {
@@ -48,7 +48,7 @@ router.put('/', checkBodyInformations, checkBeforeUpdateOrDelete, async (request
     const { cod, name, description, price, stock } = request.body;
     await connection('products').then((products) => products.updateOne(
       { cod },
-      { $set: { cod, nome: name, descricao: description, preco: price, estoque: stock } }
+      { $set: { cod, nome: name, apresentacao: description, preco: price, estoque: stock } }
     ))
     return response.status(OK).json({ message: 'Medicine has been successfully edited.'});
   } catch (err) {
