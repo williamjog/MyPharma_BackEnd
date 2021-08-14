@@ -33,9 +33,9 @@ router.get('/:name/', async (request, response) => {
 
 router.post('/', checkBodyInformations, checkBeforeCreate, async (request, response) => {
   try {
-    const { cod, name, description, price, stock } = request.body;
+    const { cod, name, apresentacao, price, stock } = request.body;
     await connection('products').then((products) => products.insertOne(
-      { cod, nome: name, apresentacao: description, preco: price, estoque: stock }
+      { cod, nome: name, apresentacao: apresentacao, preco: price, estoque: stock }
     ));
     return response.status(CREATED).json({ message: 'Medicine has been successfully created.'});
   } catch (err) {
@@ -45,10 +45,10 @@ router.post('/', checkBodyInformations, checkBeforeCreate, async (request, respo
 
 router.put('/', checkBodyInformations, checkBeforeUpdateOrDelete, async (request, response) => {
   try {
-    const { cod, name, description, price, stock } = request.body;
+    const { cod, name, apresentacao, price, stock } = request.body;
     await connection('products').then((products) => products.updateOne(
       { cod },
-      { $set: { cod, nome: name, apresentacao: description, preco: price, estoque: stock } }
+      { $set: { cod, nome: name, apresentacao: apresentacao, preco: price, estoque: stock } }
     ))
     return response.status(OK).json({ message: 'Medicine has been successfully edited.'});
   } catch (err) {
