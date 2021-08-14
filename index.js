@@ -4,9 +4,13 @@ const express = require('express');
 
 const app = express();
 
+const cors = require('cors');
+
 const medicines = require('./controllers/medicines');
 
 app.use(express.json());
+
+app.use(cors());
 
 app.use('/', medicines);
 
