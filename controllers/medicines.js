@@ -18,6 +18,7 @@ router.get('/search', async (request, response) => {
   try {
     const medicineDetailed = await connection('products').then((products) => products.find(
       { apresentacao: { $in: [ new RegExp(searchTermWithoutPlusSimbols, 'i') ] } }).toArray());
+      console.log(medicineDetailed);
     return response.status(OK).json(medicineDetailed);
   } catch (err) {
     console.error(err.message);
