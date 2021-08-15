@@ -48,6 +48,7 @@ router.get('/:name/', async (request, response) => {
 router.get('/', async (_request, response) => {
   try {
     const allMedicines = await connection('products').then((products) => products.find().toArray());
+    console.log(allMedicines);
     return response.status(OK).json(allMedicines);
   } catch (err) {
     console.error(err.message);
