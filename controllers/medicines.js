@@ -32,6 +32,7 @@ router.get('/:name/', async (request, response) => {
 });
 
 router.post('/', checkBodyInformations, checkBeforeCreate, async (request, response) => {
+  console.log('chegay no post');
   try {
     const { cod, name, description, price, stock } = request.body;
     await connection('products').then((products) => products.insertOne(
