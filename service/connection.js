@@ -7,7 +7,7 @@ const connection = async (collectionName) => {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
-  return connect.db('MyPharma').collection(collectionName);
+  return connect.db(process.env.DB_NAME).collection(collectionName);
 };
 
 module.exports = connection;
