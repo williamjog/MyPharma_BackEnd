@@ -39,7 +39,6 @@ router.get('/:name/', async (request, response) => {
   try {
     const medicineDetailed = await connection('products').then((products) => products.findOne(
       { nome: new RegExp(request.params.name, 'i') }, {}));
-    console.log(medicineDetailed);
     return response.status(OK).json(medicineDetailed);
   } catch (err) {
     console.error(err.message);
