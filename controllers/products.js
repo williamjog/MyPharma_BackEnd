@@ -16,9 +16,9 @@ router.get('/search', async (request, response) => {
   const searchTerm = request.query.q;
   const searchTermWithoutPlusSimbols = searchTerm.replace(/\+/g, ' ');
   try {
-    const medicineDetailed = await connection('products').then((products) => products.find(
+    const productDetailed = await connection('products').then((products) => products.find(
       { apresentacao: { $in: [ new RegExp(searchTermWithoutPlusSimbols, 'i') ] } }).toArray());
-    return response.status(OK).json(medicineDetailed);
+    return response.status(OK).json(productDetailed);
   } catch (err) {
     console.error(err.message);
   }
@@ -27,9 +27,9 @@ router.get('/search', async (request, response) => {
 router.get('/product/:cod', async (request, response) => {
   const formatedCod = Number(request.params.cod);
   try {
-    const medicineDetailed = await connection('products').then((products) => products.findOne(
+    const productDetailed = await connection('products').then((products) => products.findOne(
       { cod: formatedCod }, {}));
-    return response.status(OK).json(medicineDetailed);
+    return response.status(OK).json(productDetailed);
   } catch (err) {
     console.error(err.message);
   }
@@ -37,9 +37,9 @@ router.get('/product/:cod', async (request, response) => {
 
 router.get('/:name/', async (request, response) => {
   try {
-    const medicineDetailed = await connection('products').then((products) => products.findOne(
+    const productDetailed = await connection('products').then((products) => products.findOne(
       { nome: new RegExp(request.params.name, 'i') }, {}));
-    return response.status(OK).json(medicineDetailed);
+    return response.status(OK).json(productDetailed);
   } catch (err) {
     console.error(err.message);
   }
@@ -47,8 +47,8 @@ router.get('/:name/', async (request, response) => {
 
 router.get('/', async (_request, response) => {
   try {
-    const allMedicines = await connection('products').then((products) => products.find().toArray());
-    return response.status(OK).json(allMedicines);
+    const allProducts = await connection('products').then((products) => products.find().toArray());
+    return response.status(OK).json(allProducts);
   } catch (err) {
     console.error(err.message);
   }
