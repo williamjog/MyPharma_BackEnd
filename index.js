@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
-const medicines = require('./controllers/medicines');
+const products = require('./controllers/products');
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use('/', medicines);
+app.use('/', products);
 
 app.use('/images', express.static(__dirname + '/images'));
 
