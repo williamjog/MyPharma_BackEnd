@@ -60,7 +60,7 @@ router.post('/', checkBodyInformations, checkBeforeCreate, async (request, respo
     await connection('products').then((products) => products.insertOne(
       { cod, nome: name, apresentacao: description, preco: price, estoque: stock }
     ));
-    return response.status(CREATED).json({ message: 'Medicine has been successfully created.'});
+    return response.status(CREATED).json({ message: 'Product has been successfully created.'});
   } catch (err) {
     console.error(err.message);
   }
@@ -73,7 +73,7 @@ router.put('/', checkBodyInformations, checkBeforeUpdateOrDelete, async (request
       { cod },
       { $set: { cod, nome: name, apresentacao: description, preco: price, estoque: stock } }
     ))
-    return response.status(OK).json({ message: 'Medicine has been successfully edited.'});
+    return response.status(OK).json({ message: 'Product has been successfully edited.'});
   } catch (err) {
     console.error(err.message);
   }
